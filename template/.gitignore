@@ -1,0 +1,7 @@
+.env
+.env.production
+out/
+evals/predictions.jsonl
+evals/report.md
+__pycache__/
+*.pyc
