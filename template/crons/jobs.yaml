@@ -1,0 +1,31 @@
+# Scheduled runs. Loaded by Hermes' built-in cron scheduler at startup.
+# Times are in the container's TZ (UTC by default).
+# To change cadence: edit `cron` field (standard 5-field cron syntax).
+
+jobs:
+  - name: nightly-regulatory-scan
+    cron: "0 2 * * *"            # 02:00 UTC daily
+    skill: airwallex-regulatory-triage
+    prompt: |
+      Run the airwallex-regulatory-triage skill end-to-end.
+      Process all unread items across feeds in corpus/feeds.yaml.
+      When done, deliver the daily digest via the configured RUN_MODE.
+    timeout_seconds: 1800
+    budget_usd: 1.00              # per-run cap; hard stop if exceeded
+
+  - name: morning-digest
+    cron: "0 7 * * 1-5"          # 07:00 UTC weekdays
+    skill: airwallex-regulatory-triage
+    prompt: |
+      Re-deliver the most recent digest in case the recipient missed
+      the overnight notification. No re-processing — read out/digest/latest.md
+      and forward it.
+    timeout_seconds: 60
+    budget_usd: 0.05
+
+  - name: weekly-eval
+    cron: "0 4 * * 1"            # 04:00 UTC Monday
+    skill: null                   # not a skill run — script
+    command: "python evals/score.py --report"
+    timeout_seconds: 600
+    budget_usd: 0.50

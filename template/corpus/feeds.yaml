@@ -1,0 +1,58 @@
+# Regulator feeds the agent watches.
+# These are public RSS/Atom endpoints from each regulator's news section.
+# To add a regulator: append an entry. No code change required.
+#
+# Verify each URL responds before committing — regulators occasionally
+# move feed paths. Run `make verify-feeds` to check.
+
+feeds:
+  - name: FCA (UK)
+    jurisdiction: UK
+    type: rss
+    url: https://www.fca.org.uk/news/rss.xml
+    categories: [policy, enforcement, consultation]
+
+  - name: Bank of England (UK)
+    jurisdiction: UK
+    type: rss
+    url: https://www.bankofengland.co.uk/rss/news
+
+  - name: MAS (Singapore)
+    jurisdiction: SG
+    type: rss
+    url: https://www.mas.gov.sg/news/rss
+
+  - name: HKMA (Hong Kong)
+    jurisdiction: HK
+    type: rss
+    url: https://www.hkma.gov.hk/eng/rss/press-releases.xml
+
+  - name: FinCEN (US)
+    jurisdiction: US-FED
+    type: rss
+    url: https://www.fincen.gov/news-room/rss.xml
+
+  - name: OFAC (US)
+    jurisdiction: US-FED
+    type: rss
+    url: https://ofac.treasury.gov/recent-actions/rss
+
+  - name: NYDFS (US-NY)
+    jurisdiction: US-NY
+    type: rss
+    url: https://www.dfs.ny.gov/rss/press-releases
+
+  - name: ASIC (Australia)
+    jurisdiction: AU
+    type: rss
+    url: https://asic.gov.au/about-asic/news-centre/find-a-media-release/rss/
+
+  - name: AUSTRAC (Australia)
+    jurisdiction: AU
+    type: rss
+    url: https://www.austrac.gov.au/rss.xml
+
+  - name: EBA (EU)
+    jurisdiction: EU
+    type: rss
+    url: https://www.eba.europa.eu/rss.xml

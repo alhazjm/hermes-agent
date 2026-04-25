@@ -1,0 +1,70 @@
+# Airwallex's known licence footprint, compiled from public disclosures
+# (their website's "Licensing" page, regulatory registers, press releases).
+#
+# This is illustrative — verify against current public sources before
+# treating as ground truth. The agent uses these IDs in `affected_licences`.
+
+licences:
+  - id: UK-EMI
+    jurisdiction: UK
+    regulator: FCA
+    type: Authorised Electronic Money Institution
+    notes: "Holds AEMI authorisation; covers GBP e-money issuance."
+
+  - id: EU-EMI
+    jurisdiction: EU (NL)
+    regulator: DNB
+    type: E-money Institution
+    notes: "Netherlands-based EU passport for e-money."
+
+  - id: AU-AFSL
+    jurisdiction: AU
+    regulator: ASIC
+    type: Australian Financial Services Licence
+    notes: "Covers FX dealing and non-cash payment products."
+
+  - id: AU-AUSTRAC
+    jurisdiction: AU
+    regulator: AUSTRAC
+    type: Remittance / DCE registration
+    notes: "AML obligations for cross-border remittance."
+
+  - id: SG-MPI
+    jurisdiction: SG
+    regulator: MAS
+    type: Major Payment Institution
+    notes: "Cross-border money transfer + e-money under PSA."
+
+  - id: HK-MSO
+    jurisdiction: HK
+    regulator: C&ED
+    type: Money Service Operator
+    notes: "Remittance and money-changing licence."
+
+  - id: US-MSB
+    jurisdiction: US
+    regulator: FinCEN
+    type: Money Services Business
+    notes: "Federal MSB registration."
+
+  - id: US-MTL-CA
+    jurisdiction: US-CA
+    regulator: DFPI
+    type: Money Transmitter Licence
+    notes: "California state MTL — example of state-by-state coverage."
+
+  - id: US-MTL-NY
+    jurisdiction: US-NY
+    regulator: NYDFS
+    type: Money Transmitter Licence
+    notes: "New York BitLicense scope to be added if/when stablecoin rails launch."
+
+  - id: CA-MSB
+    jurisdiction: CA
+    regulator: FINTRAC
+    type: Money Services Business
+    notes: "Federal MSB registration."
+
+# Multi-jurisdiction tag used when a single update touches several
+# of the above. The agent will set `affected_licences = ["MULTI"]`
+# and route to Group GC.

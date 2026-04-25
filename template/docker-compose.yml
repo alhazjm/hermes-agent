@@ -1,0 +1,21 @@
+services:
+  agent:
+    build: .
+    image: agentic-template:latest
+    env_file: .env
+    volumes:
+      - ./out:/app/out
+      - hermes-state:/root/.hermes
+    restart: unless-stopped
+    # Per-container memory cap; protects host VPS from runaway sessions.
+    mem_limit: 1g
+    # Hermes' built-in cron runs inside this single process; no separate
+    # scheduler container needed.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  hermes-state:
